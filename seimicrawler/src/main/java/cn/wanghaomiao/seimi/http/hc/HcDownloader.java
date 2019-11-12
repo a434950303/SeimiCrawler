@@ -124,7 +124,14 @@ public class HcDownloader implements SeimiDownloader {
             if (referer!=null){
                 seimiResponse.setReferer(referer.getValue());
             }
-            String contentTypeStr = entity.getContentType().getValue().toLowerCase();
+            Header contentType1 = entity.getContentType();
+            String contentTypeStr ="";
+            if (contentType1!=null){
+                 contentTypeStr = entity.getContentType().getValue().toLowerCase();
+            }else {
+                contentTypeStr="Do not hav contentTypeStr ";
+            }
+
             if (contentTypeStr.contains("text")||contentTypeStr.contains("json")||contentTypeStr.contains("ajax")){
                 seimiResponse.setBodyType(BodyType.TEXT);
                 try {

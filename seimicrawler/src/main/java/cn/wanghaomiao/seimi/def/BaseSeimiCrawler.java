@@ -29,7 +29,6 @@ import java.util.List;
  * @since 2015/8/17.
  */
 public abstract class BaseSeimiCrawler implements SeimiCrawler {
-
     protected Logger logger = LoggerFactory.getLogger(getClass());
     protected String crawlerName;
     protected String[] defUAs = new String[]{
@@ -52,6 +51,9 @@ public abstract class BaseSeimiCrawler implements SeimiCrawler {
             "Mozilla/5.0 (Macintosh; U; PPC Mac OS X Mach-O; en-US; rv:1.8.1.7pre) Gecko/20070815 Firefox/2.0.0.6 Navigator/9.0b3",
             "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.12) Gecko/20080219 Firefox/2.0.0.12 Navigator/9.0.0.6"
     };
+
+    protected String[] startsUrls;
+
 
     protected void push(Request request) {
         request.setCrawlerName(crawlerName);
@@ -97,4 +99,19 @@ public abstract class BaseSeimiCrawler implements SeimiCrawler {
         return crawlerName;
     }
 
+    public Logger getLogger() {
+        return logger;
+    }
+
+    public void setLogger(Logger logger) {
+        this.logger = logger;
+    }
+
+    public String[] getStartsUrls() {
+        return startsUrls;
+    }
+
+    public void setStartsUrls(String[] startsUrls) {
+        this.startsUrls = startsUrls;
+    }
 }

@@ -1,0 +1,78 @@
+spring.profiles.active: dev
+---
+spring:
+  profiles: dev
+  application:
+    name: xxha-spider
+  jackson:
+      time-zone: GMT+8
+  thymeleaf:
+    prefix: classpath:/templates/
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .html
+    static-path-pattern: /static/**
+es:
+  clusterNodes: 47.93.217.169
+  #clusterNodes: localhost
+  port: 9200
+  clusterName: test
+  num: 1
+  tcpPort: 9300
+  userName: elastic
+  password: elastic
+mybatis:
+  mapper-locations: classpath:/mappers/*.xml
+  type-aliases-package: com.xxha.domain.entity
+  type-handlers-package: com.xxha.util.hander
+logging:
+  level:
+    com.xxha.domain.mappers : debug
+security:
+  basic:
+    enabled: false
+
+seimi:
+  crawler:
+    enabled: true
+    names: test,
+    enable-redisson-queue: true
+dir:
+  config:
+    moonAll:
+      baseDir: E:\moon_data
+---
+
+---
+spring:
+  profiles: local
+  application:
+    name: xxha-es
+  jackson:
+    time-zone: GMT+8
+  thymeleaf:
+    prefix: classpath:/templates/
+    mode: html
+  datasource:
+    url: jdbc:postgresql://2zel917689cge1c7xjo.pg.rds.aliyuncs.com:3432/es?useUnicode=true&characterEncoding=utf8
+    username: sd
+    password: Xxha123456
+    driverClassName: org.postgresql.Driver
+    maxActive: 10
+    maxIdle: 3
+  mvc:
+    view:
+      prefix: /templates/
+      suffix: .html
+    static-path-pattern: /static/**
+es:
+  clusterNodes: localhost
+  port: 9200
+  clusterName: test
+  num: 1
+  tcpPort: 9300
+mybatis:
+  mapper-locations: classpath:/mappers/*.xml
+  type-aliases-package: com.xxha.domain.entity
+  type-handlers-package: com.xxha.util.hander
